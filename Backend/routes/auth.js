@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs'); // ✅ Add this
-const jwt = require('jsonwebtoken'); // ✅ Add this
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken'); 
 const User = require('../models/User');
 const Profile = require('../models/Profile');
 const authMiddleware = require('../JWT/authMiddleware');
@@ -17,7 +17,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
 });
 
 
-
+//Handle user registration
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
   try {
     const existing = await User.findOne({ email });
     if (existing) {
-      return res.status(409).json({ message: 'Email already registered' });
+      return res.status(409).json({ message: 'Email already registered' });//checks email from Db and if it already exist
     }
 
     const hashedPassword = await bcrypt.hash(password, 10); // ✅ HASH the password
@@ -49,7 +49,7 @@ router.post('/register', async (req, res) => {
 
 
 
- //For now, use plaintext password. Later we'll hash it.
+//Handle login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
