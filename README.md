@@ -9,13 +9,32 @@ A full-stack web application for a tax accountant firm, built with **React**, **
 
 ### 👤 User Features
 - **Register/Login** with email and password
+- 
+<img width="1900" height="918" alt="image" src="https://github.com/user-attachments/assets/77cb4d38-4498-493c-b054-5260bc71346f" />
+
 - **Dashboard** to upload/view/delete tax documents (PDFs only)
+  
+<img width="1901" height="915" alt="image" src="https://github.com/user-attachments/assets/f797ac75-720b-4298-afcc-87418f731fb0" />
+
 - **Profile update** (name, contact, etc.)
-- **Send inquiries** to accountant (via EmailJS)
+
+  <img width="1905" height="912" alt="image" src="https://github.com/user-attachments/assets/9650953d-3ef1-4110-bafc-628cad435c8d" />
+
+- **Send Messages** to accountant (chat)
+
+<img width="1895" height="905" alt="image" src="https://github.com/user-attachments/assets/a2515915-5c3c-43e8-ba7f-cecdefd3c56f" />
+
 
 ### 👨‍💼 Admin Features
 - Login with hardcoded credentials (can be expanded)
-- Access to all users and their submitted documents (coming soon)
+- Admin Dashboard see all users, their uploads, Messaging with users. Admin can set active, inactive users, update their info as well
+<img width="1905" height="907" alt="image" src="https://github.com/user-attachments/assets/30b6eaa7-7167-4263-84fa-ac535bfa24b6" />
+
+- Access to all users and their submitted documents (Later will fetch from DB)
+<img width="1903" height="914" alt="image" src="https://github.com/user-attachments/assets/91dca837-960e-4702-92d0-91835f78ea20" />
+
+-- Messaging system for chatting with users
+<img width="1899" height="852" alt="image" src="https://github.com/user-attachments/assets/bc6c38e3-87c5-49bd-b1b7-53db2ed9d723" />
 
 ---
 
@@ -68,6 +87,9 @@ Users can send inquiries directly to the accountant using a contact form.
 ### 📬 How It Works:
 - Inquiry form uses **EmailJS** to send emails without backend.
 - Email is delivered directly to the accountant’s inbox.
+
+<img width="1894" height="914" alt="image" src="https://github.com/user-attachments/assets/15c20162-cf08-4cb8-a11c-603d9d2660e0" />
+
 
 ### 🔧 Setup Instructions:
 1. Sign up at [https://emailjs.com](https://emailjs.com).
@@ -150,6 +172,26 @@ Users can send inquiries directly to the accountant using a contact form.
 ```
 
 ---
+## API Overview
+The backend API uses REST endpoints secured by JWT tokens for user-specific data.
+
+| Endpoint               | Method | Description                         |
+| ---------------------- | ------ | ----------------------------------- |
+| `/api/auth/register`   | POST   | Register new user                   |
+| `/api/auth/login`      | POST   | Login user and receive JWT          |
+| `/api/profile`         | GET    | Get authenticated user's profile    |
+| `/api/profile`         | POST   | Update authenticated user's profile |
+| `/api/taxdocs/:userId` | GET    | Get all tax documents for a user    |
+| `/api/taxdocs/:userId` | POST   | Upload a new tax document           |
+| `/api/taxdocs/:docId`  | DELETE | Delete a specific tax document      |
+
+##Security 
+
+--Passwords are hashed using bcrypt.
+--Authentication uses JWT tokens stored on client-side.
+--Tokens are validated and checked against a token revocation list.
+--Sensitive API routes require valid JWT tokens in the Authorization header.
+
 
 ## 🔐 Future Enhancements
 - Admin dashboard to view user uploads
