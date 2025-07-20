@@ -1,6 +1,7 @@
 # 🧾 Tax Accountant Portal
 
 A full-stack web application for a tax accountant firm, built with **React**, **Node.js**, **Express**, and **MongoDB**. It supports user registration, authentication, document uploads, admin access, and inquiry messaging via **EmailJS**.
+<img width="1904" height="908" alt="image" src="https://github.com/user-attachments/assets/e1d3db8d-183a-4958-955e-bb1588cf781f" />
 
 ---
 
